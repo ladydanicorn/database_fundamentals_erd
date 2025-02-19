@@ -1,0 +1,44 @@
+# BookHaven Database Schema Documentation
+
+## TRANSACTIONS
+- transaction_id (Primary Key, Auto Increment)
+- book_id (Required Foreign Key referencing Books table)
+- customer_id (Required Foreign Key referencing Customers table)
+- transaction_date (Required date)
+- quantity (Required whole number)
+- total_amount (Required decimal number with 2 decimal places)
+
+## CUSTOMERS
+- customer_id (Primary Key, Auto Increment)
+- name (Required text, max 100 characters)
+- phone (Optional text, max 15 characters)
+- address (Optional text, max 255 characters)
+- email (Required unique text, max 100 characters)
+
+## BOOKS
+- book_id (Primary Key, Auto Increment)
+- title (Required text, max 255 characters)
+- genre (Optional text, max 50 characters)
+- ISBN (Required unique text, max 13 characters)
+- price (Required decimal number with 2 decimal places)
+- author_id (Required Foreign Key referencing Authors table)
+- stock (Required whole number)
+
+## AUTHORS
+- author_id (Primary Key, Auto Increment)
+- name (Required text, max 100 characters)
+- birthdate (Optional date)
+- nationality (Optional text, max 100 characters)
+
+## Relationships
+1. Books to Authors: Many-to-One
+   - Each book has exactly one author
+   - Each author can have multiple books
+
+2. Transactions to Books: Many-to-One
+   - Each transaction references exactly one book
+   - Each book can be involved in multiple transactions
+
+3. Transactions to Customers: Many-to-One
+   - Each transaction is associated with exactly one customer
+   - Each customer can have multiple transactions
